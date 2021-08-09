@@ -1,10 +1,22 @@
-import requests
-from bs4 import BeautifulSoup
+line1 = """4,60
+(11 commentaires)
+·
+Cannes, Provence-Alpes-Côte d'Azur, France
+Partager
+Enregistrer
+"""
 
-URL = 'https://www.airbnb.fr/rooms/16765199?adults=1&source_impression_id=p3_1628135606_5GJdbRjg9rqp9UCx&guests=1'
-page = requests.get(URL)
-soup = BeautifulSoup(page.content, "html.parser")
-results = soup.find_all("div", class_="_le6wlg")
-
-for result in results:
-    print(result.text)
+line2 = """4,84
+(104 commentaires)
+·
+󰀃
+Superhost
+·
+Plérin, Bretagne, France
+Partager
+Enregistrer
+"""
+line1 = line1.replace("\n", " ")
+line2 = line2.replace("\n", " ")
+print(line1.split('·')[-1].replace(" Partager Enregistrer", ''))
+print(line2.split('·')[-1].replace(" Partager Enregistrer", ''))
